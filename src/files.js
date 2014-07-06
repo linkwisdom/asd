@@ -34,14 +34,12 @@ exports.cd = function (dir) {
     }
 };
 
-exports.cdp = function (dir, needChdir) {
+exports.cdp = function (dir) {
     if (!fs.existsSync(dir)) {
         this.mkdirp(dir);  
     }
     
-    if (needChdir) {
-        process.chdir(dir);
-    }
+    process.chdir(dir);
 
     return process.cwd();
 };

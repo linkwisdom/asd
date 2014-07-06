@@ -1,3 +1,4 @@
+var path = require('path');
 var conser = require('conser');
 var env = require('loconf');
 var asd = require('./index');
@@ -49,30 +50,35 @@ var cli = {
         return files.mkdirp(dir);
     },
     module: function (dir) {
-        var me = this;
-        var pwd = files.cdp(dir);
-
-        setTimeout(function () {
-            me.touch(
-                'Action', 'Model', 'View',
-                'config', 'service', 'style.less',
-                'monitor', 'template.tpl'
-            );
-        }, 150);
-
-        console.log('present work dir is [%s] \n', pwd);
+        return cli.touch(
+            dir,
+            'Action', 'Model', 'View',
+            'config', 'service', 'style.less',
+            'monitor', 'template.tpl'
+        );
     },
     // 增加以文件
-    touch: function () {
+    touch: function (dir) {
+        dir = path.resolve(process.cwd(), dir);
+
+
+        var pwd = files.mkdirp(dir);
+
+        console.log(pwd);
+
         var context = env.getContext('project');
-        return Array.prototype.slice.call(arguments)
+
+        return Array.prototype.slice.call(arguments, 1)
             .map(function (item) {
-                asd.touch(item, context);
+                asd.touch(item, context, pwd);
                 return item;
             }).join('\n');
+    },
+    start: function () {
+        return conser.start();
     }
 };
 
 conser.include(cli);
 
-module.exports = conser;
+module.exports = cli;
