@@ -1,0 +1,32 @@
+{
+  "author": {
+    "name": "liandong liu"
+  },
+  "contacts": [
+    "liu@liandong.org"
+  ],
+  "name": "asd",
+  "description": "create a amd module auto",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/linkwisdom/asd.git"
+  },
+  "main": "./src/index.js",
+  "keywords": [],
+  "bin": {
+    "asd": "./bin/asd"
+  },
+  "dependencies": {
+    "etpl": "~2.1.0",
+    "loconf": "~0.0.1",
+    "conser": "~0.0.1",
+    "mime": "~1.2.11"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "test": "node src/test.js"
+  }
+}

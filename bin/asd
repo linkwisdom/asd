@@ -1,0 +1,4 @@
+#! /usr/bin/env node
+
+var client = require('../src/cli');
+client.start();
