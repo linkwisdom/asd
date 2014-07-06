@@ -1,7 +1,7 @@
 asd
 ===
 
-支持系统开发 ( assist system develop )
+支持系统开发 ( assist system development )
 
 ## Feature
 
@@ -15,15 +15,17 @@ asd
 
 ### 使用系统命令行
 
+```shell
 > asd set email liu@liandong.org
 > asd module src/module/app/coreword
+```
 
 ### 使用内建命令行
 - 不需要再输入asd前缀
 
+```shell
 > asd
 > set email liu@liandong.org
 > module src/module/app/coreword
-
-### 命令集合
+```
 
