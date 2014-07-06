@@ -61,3 +61,16 @@ exports.cat = function (filename) {
         return 'not found the file';
     }
 };
+
+exports.rm = function (filename) {
+    try {
+        var filePath = path.resolve(process.cwd(), filename);
+        fs.unlinkSync( filePath );
+    } catch (ex) {}
+};
+
+exports.rmdir = function (pathname) {
+    try {
+        fs.rmdirSync( pathname );
+    } catch (ex) {}
+};

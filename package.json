@@ -6,8 +6,8 @@
     "liu@liandong.org"
   ],
   "name": "asd",
-  "description": "create a amd module auto",
-  "version": "0.0.2",
+  "description": "assist system develop",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "git://github.com/linkwisdom/asd.git"

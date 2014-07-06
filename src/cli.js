@@ -43,6 +43,12 @@ var cli = {
     cd: function (dir) {
         return files.cd(dir);
     },
+    rmdir: function (pathname) {
+        return files.rmdir(pathname);
+    },
+    rm: function (filename) {
+        return files.rm(filename);
+    },
     cat: function (filename) {
         return files.cat(filename);
     },
@@ -80,5 +86,19 @@ var cli = {
 };
 
 conser.include(cli);
+
+var argv = process.argv;
+
+if ( argv.length > 2 ) {
+    var cmd = argv[2];
+    var args = Array.prototype.slice.call(argv, 3);
+
+    if (cli.hasOwnProperty(cmd)) {
+        var result = cli[cmd].apply(cli, args);
+        console.log(result);
+    }
+} else {
+    conser.start();
+}
 
 module.exports = cli;
