@@ -1,29 +1,83 @@
 var fs = require('fs');
 var path = require('path');
 
+var bcsStat = 0;
+
 exports.login = function (context) {
     var BCS = require('./lib/bcs');
     exports.bcs = BCS.createClient({
         accessKey: context.ackey,
         secretKey: context.sckey
     });
+    bcsStat++;
 };
 
-exports.put = function ( filename ) {
-    if (!exports.bcs) {
-        return 'bcs not logined';
+exports.push = function ( filename , context) {
+    if (!exports.bcs && context) {
+        exports.login(context);
     }
+
     var source = path.resolve(process.cwd(), filename);
 
     exports.bcs.putObject({
-        bucket: 'new-buck',
+        bucket: 'my-file',
         object: filename,
         source: source
     }, function (error, result) {
         if (error) {
             console.log(error);
         } else {
-            console.log(result);
+            console.log(result.body);
         }
     });
-}
+};
+
+exports.pull = function ( filename, context ) {
+    if (!exports.bcs && context) {
+        exports.login(context);
+    }
+
+    var source = path.resolve(process.cwd(), filename);
+
+    exports.bcs.getObject({
+        bucket: 'my-file',
+        object: filename,
+        source: source
+    }, function (error, result) {
+
+        if (error) {
+            console.log(error);
+        } else {
+            console.log(result.body);
+        }
+    });
+};
+
+exports.list = function ( pathname, context ) {
+    if (!exports.bcs && context) {
+        exports.login(context);
+    }
+
+    var source = path.resolve(process.cwd(), pathname);
+
+    exports.bcs.listObject({
+        bucket: 'my-file',
+        object: pathname,
+        source: source
+    }, function (error, response) {
+
+        if (error) {
+            console.log(error);
+        } else if (response && response.body) {
+            var list = response.body.object_list;
+
+            var result = list.map(function (item) {
+                return item.object;
+            });
+            result.sort();
+            console.log( JSON.stringify(result, '\t', 4) );
+        } else {
+            console.log( JSON.stringify(response, '\t', 4) );
+        }
+    });
+};

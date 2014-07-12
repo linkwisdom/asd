@@ -458,7 +458,7 @@ BCS.prototype.listObject = function(options, callback) {
   var path = '/' + options.bucket + '?sign=' + self.generateSign({
     method: 'GET',
     bucket: options.bucket,
-    object: '/'
+    object: '/',
   }) + '&start=' + options.start + '&limit=' + options.limit;
 
   self.request({

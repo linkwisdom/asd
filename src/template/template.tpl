@@ -1,5 +1,7 @@
 <!--- target: ${moduleDomId} -->
 <div id="${moduleDomId}">
     <h>${title}</h>
-    [${moduleId}]
+    <div class="content-wrapper">
+
+    </div>
 </div>

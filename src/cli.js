@@ -5,7 +5,7 @@ var asd = require('./index');
 var files = require('./files');
 var bcs = require('./bcs');
 
-env.use('project');
+env.use('asd');
 
 var cli = {
     // 设置环境变量
@@ -23,17 +23,24 @@ var cli = {
     },
     // 批量输出环境变量集合
     dump: function () {
-        return env.getContext('project');
+        return env.getContext('asd');
     },
     bcs: function (ackey, sckey) {
         ackey && env.set(ackey, ackey);
         sckey && env.set(sckey, sckey);
-        
-        return bcs.login(env.getContext('project'));
+        return bcs.login(env.getContext('asd'));
     },
-    put: function (filename) {
-        bcs.put(filename);
+    push: function (filename) {
+        bcs.push(filename, env.getContext('asd'));
         return filename;
+    },
+    pull: function (filename) {
+        bcs.pull(filename, env.getContext('asd'));
+        return filename;
+    },
+    dir: function (pathname) {
+        bcs.list(pathname, env.getContext('asd'));
+        return pathname;
     },
     // 列出目标文件的文件列表
     ls: function (dir) {
@@ -56,29 +63,42 @@ var cli = {
         return files.mkdirp(dir);
     },
     module: function (dir) {
-        return cli.touch(
-            dir,
-            'Action', 'Model', 'View',
-            'config', 'service', 'style.less',
-            'monitor', 'template.tpl'
-        );
+        var batch = env.get('module-files');
+        if (batch) {
+            batch = batch.split(/[\s,]/) || [];
+
+        } else {
+            batch = [
+                'Action', 'Model', 'View',
+                'config', 'service', 'style.less',
+                'monitor', 'template.tpl', 'actionConf'
+            ];
+        }
+
+        batch.unshift(dir);
+        return cli.touch.apply(cli, batch);
     },
     // 增加以文件
     touch: function (dir) {
+
+        var list = Array.prototype.slice.call(arguments, 1);
+        var leadFile = dir.match(/\w+\.\w{2,5}$/);
+
+        if (leadFile && leadFile[0]) {
+            leadFile = leadFile[0];
+            
+            dir = dir.replace('/' + leadFile, '');
+            list.unshift(leadFile);
+        }
+
         dir = path.resolve(process.cwd(), dir);
-
-
         var pwd = files.mkdirp(dir);
 
-        console.log(pwd);
-
-        var context = env.getContext('project');
-
-        return Array.prototype.slice.call(arguments, 1)
-            .map(function (item) {
-                asd.touch(item, context, pwd);
-                return item;
-            }).join('\n');
+        var context = env.getContext('asd');
+        return list.map(function (item) {
+            var path = asd.touch(item, context, pwd);
+            return path.replace(process.cwd(), '.');
+        }).join('\n');
     },
     start: function () {
         return conser.start();

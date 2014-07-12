@@ -4,6 +4,6 @@
  * @author ${username} ( ${email} )
  */
 
-define(function (require, exports, module) {
+define(function (require, exports) {
     return exports;
 });

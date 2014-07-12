@@ -49,8 +49,6 @@ define(function (require) {
 
     /**
      * 取消或关闭退出
-     * 
-     * @public
      */
     DerivedAction.prototype.close = function () {
         this.fire('close');
@@ -59,11 +57,10 @@ define(function (require) {
     /**
      * 完成所有操作
      * 
-     * @public
      * @param {Object} data 请求响应数据
      */
     DerivedAction.prototype.complete = function (data) {
-        this.fire('complete', {data: data});
+        this.fire('complete', { data: data });
     };
 
     /**

@@ -6,17 +6,7 @@
 define(function (require) {
     var util = require('common/util');
     var UIView = require('ef/UIView');
-    
-    require('esui/Button');
-    require('esui/TextBox');
-    require('er/tpl!./template.tpl');
-
-    /**
-     * 常量配置
-     * 
-     * @type {Object}
-     */
-    var config = require('./config');
+    require('etpl/tpl!./template.tpl');
 
     /**
      * ${title} ViewType
@@ -34,29 +24,28 @@ define(function (require) {
     DerivedView.prototype.template = '${moduleDomId}';
 
     /** 
-     * 修改计划预算属性设置
+     * UI属性设置
      * 
      * @override
      * @type {Object}
      */
     DerivedView.prototype.uiProperties = {
-
+        // uiProperties
     };
 
     /** 
-     * UI 事件定义
+     * UI事件定义
      *
      * @override
      * @type {Object}
      */
     DerivedView.prototype.uiEvents = {
-
+        // uiEvents
     };
 
     /** 
      * 视图内查找元素
-     *
-     * @public
+     * 
      * @param {NodeList}
      */
     DerivedView.prototype.find = function (selector) {
