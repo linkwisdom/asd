@@ -59,26 +59,36 @@ asd
 > asd
 > set email liu@liandong.org
 > module src/module/app/coreword
+> help # 查看所有可用命令
 ```
 
 ### 云端备份
 
-- 要使用云端备份功能，需要先申请bcs存储，fcfe可提供公用bucket
+- 要使用云端备份功能，需要先申请bcs存储
+- fcfe可提供公用bucket
 - 使用bcs暂时只支持以下几个命令，后期将加入更多支持
 
 ```shell
-> asd push module/app/coreword.patch ## 将在云端路径module/app/中增加 coreword.patch文件
+> asd push module/app/coreword.patch 
+    ## 将在云端路径module/app/中增加 coreword.patch文件
+    
 > asd pull module/app/coreword.patch ## 下载云端指定路径下的文件
-> asd dir / 显示bucket下所有文件
+> asd dir # 显示bucket下所有文件
 ```
 
-- 在使用前需要先设置sckey 和ackey 可能正常访问，否则会拒绝访问
-- 
+- 在使用前需要先设置sckey 和ackey
 
 ```shell
 > asd set sckey xxxxx
 > asd set ackey yyyyy
 ```
 
+### conser 命令说明
+
+- conser 使用简单的文本输入流作为交互式命令
+- conser 切词默认按空格切词
+- 如果要指定包含空格的值，使用双引号\"包含，比如
+
+> asd set username "Liandong Liu"
 
 
