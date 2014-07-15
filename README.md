@@ -26,9 +26,30 @@ asd
 
 ### 使用系统命令行
 
+- 设置项目基本配置
+
+
+``` shell
+> asd set email liu@liandong.org # author 信息
+> asd set username "Liandong Liu"  # author 信息
+> asd set module-files "Action Model View monitor template.tpl style.less"
+# 指定mvc需要的文件(有默认配置)
+```
+
+- 在项目目录中创建指定模块
+- 自动会以src/为基准路径配置tpl/less/js中的moduleID, DomId等信息
+
 ```shell
-> asd set email liu@liandong.org
-> asd module src/module/app/coreword
+> asd set title "看排名"
+> asd module src/module/app/coreword ## 创建MVC所需所有文件
+```
+
+- 创建单个或多个指定文件
+
+```shell
+> asd touch view.js ## 创建单个文件
+> asd touch demo/actionConf.js launcher.js 
+  #自动补全demo文件夹，并且在demo/中增加多个文件
 ```
 
 ### 使用内建命令行
@@ -39,4 +60,25 @@ asd
 > set email liu@liandong.org
 > module src/module/app/coreword
 ```
+
+### 云端备份
+
+- 要使用云端备份功能，需要先申请bcs存储，fcfe可提供公用bucket
+- 使用bcs暂时只支持以下几个命令，后期将加入更多支持
+
+```shell
+> asd push module/app/coreword.patch ## 将在云端路径module/app/中增加 coreword.patch文件
+> asd pull module/app/coreword.patch ## 下载云端指定路径下的文件
+> asd dir / 显示bucket下所有文件
+```
+
+- 在使用前需要先设置sckey 和ackey 可能正常访问，否则会拒绝访问
+- 
+
+```shell
+> asd set sckey xxxxx
+> asd set ackey yyyyy
+```
+
+
 
