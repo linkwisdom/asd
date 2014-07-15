@@ -43,10 +43,11 @@ define(function (require) {
         // uiEvents
     };
 
-    /** 
+    /**
      * 视图内查找元素
-     * 
-     * @param {NodeList}
+     *
+     * @param {string} selector 选择器字符串
+     * @return {NodeList}
      */
     DerivedView.prototype.find = function (selector) {
         return $(this.getContainerElement()).find(selector);

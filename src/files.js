@@ -44,6 +44,16 @@ exports.cdp = function (dir) {
     return process.cwd();
 };
 
+exports.save = function (filename, content) {
+    var fname = filename.match(/\/\w+\.\w{2,5}$/);
+    if (fname && fname[0]) {
+        var dir = filename.replace(fname, '');
+        exports.mkdirp(dir);
+    }
+    fs.writeFileSync(filename, content);
+    return filename;
+};
+
 exports.mkdirp = function (pathname) {
     mkdirp.sync(pathname);
     return pathname;

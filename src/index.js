@@ -49,6 +49,7 @@ exports.touch = function (target, context, pwd) {
 
     var moduleId = context.moduleId = exports.getModuleId(file);
     context.moduleDomId = moduleId.replace(/\//g, '-');
+    context.monitorTag = moduleId.replace(/\//, '_');
 
     // 模板中采用规则 <!---为合法标识
     content = content.replace(/\<\!\-\-\-/g, '<!--');

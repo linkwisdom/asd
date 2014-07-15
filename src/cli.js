@@ -30,17 +30,22 @@ var cli = {
         sckey && env.set(sckey, sckey);
         return bcs.login(env.getContext('asd'));
     },
-    push: function (filename) {
-        bcs.push(filename, env.getContext('asd'));
+    push: function (filename, rfile) {
+        bcs.push(filename, env.getContext('asd'), rfile);
         return filename;
     },
-    pull: function (filename) {
-        bcs.pull(filename, env.getContext('asd'));
-        return filename;
+    pull: function (rfile, lfile) {
+        bcs.pull(rfile, env.getContext('asd'), function (content) {
+            files.save(lfile || rfile, content);
+        });
+        return rfile;
     },
     dir: function (pathname) {
-        bcs.list(pathname, env.getContext('asd'));
+        bcs.list(pathname || '/', env.getContext('asd'));
         return pathname;
+    },
+    save: function (filename, content) {
+        return files.save(filename, content);
     },
     // 列出目标文件的文件列表
     ls: function (dir) {
@@ -86,8 +91,13 @@ var cli = {
 
         if (leadFile && leadFile[0]) {
             leadFile = leadFile[0];
+
+            if (dir == leadFile) {
+                dir = './';
+            } else {
+                dir = dir.replace('/' + leadFile, '');
+            }
             
-            dir = dir.replace('/' + leadFile, '');
             list.unshift(leadFile);
         }
 

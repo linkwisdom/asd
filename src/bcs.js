@@ -12,7 +12,7 @@ exports.login = function (context) {
     bcsStat++;
 };
 
-exports.push = function ( filename , context) {
+exports.push = function ( filename , context, rfile ) {
     if (!exports.bcs && context) {
         exports.login(context);
     }
@@ -21,7 +21,7 @@ exports.push = function ( filename , context) {
 
     exports.bcs.putObject({
         bucket: 'my-file',
-        object: filename,
+        object: rfile || filename,
         source: source
     }, function (error, result) {
         if (error) {
@@ -32,7 +32,7 @@ exports.push = function ( filename , context) {
     });
 };
 
-exports.pull = function ( filename, context ) {
+exports.pull = function ( filename, context, callback ) {
     if (!exports.bcs && context) {
         exports.login(context);
     }
@@ -44,12 +44,7 @@ exports.pull = function ( filename, context ) {
         object: filename,
         source: source
     }, function (error, result) {
-
-        if (error) {
-            console.log(error);
-        } else {
-            console.log(result.body);
-        }
+        callback && callback(error || result.body);
     });
 };
 
