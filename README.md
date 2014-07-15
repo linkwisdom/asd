@@ -91,4 +91,42 @@ asd
 
 > asd set username "Liandong Liu"
 
+<table>
+  <tr>
+    <th>cmd</th> <th>desc</th> <th>usage</th>
+  </tr>
+  <tr>
+    <td>set</td> <td>设置环境值 </td> <td> set key value</td>
+  </tr>
+  <tr>
+    <td>get</td> <td>获取环境值  </td><td> get key</td>
+  </tr>
+  <tr>
+    <td>delete</td> <td>删除环境值 </td><td> delete key</td>
+  </tr>
+  <tr>
+    <td>dump</td> <td> 打印所有值 </td><td> dump </td>
+  </tr>
+  <tr>
+    <td>touch</td> <td>创建文件  </td><td> touch app/util.js lib.js </td>
+  </tr>
+  <tr>
+    <td>module</td> <td>建立新模块</td><td>  module app/coreword  </td>
+  </tr>
+  <tr>
+    <td>push</td> <td> 上传文件</td><td>  push localfile [remotepath] </td>
+  </tr>
+  <tr>
+    <td>pull</td> <td> 下载文件 </td><td> push remotefile [localpath]  </td>
+  </tr>
+  <tr>
+    <td>dir</td> <td> 列表云端列表 </td><td> dir /  </td>
+  </tr>
+  <tr>
+    <td>cat</td> <td> 显示文件 </td><td>  cat filepath  </td>
+  </tr>
+  <tr>
+    <td>save</td> <td>存储文件 </td><td>  save filename  content  </td>
+  </tr>
+</table>
 
