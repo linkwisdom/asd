@@ -16,6 +16,7 @@ asd
 - 支持自定义上下文
 - 支持自定义模板目录
 - 支持命令扩展
+- 支持mock文件生成
 - 支持bcs云端文件备份
 
 ## install
@@ -83,6 +84,26 @@ asd
 > asd set ackey yyyyy
 ```
 
+### 模板数据
+> 模板中的数据通过设置的Context自动获取
+
+#### 需要手动设置的数据
+- title 当前模块的中文描述
+- username 作者名
+- email 邮箱
+
+#### 根据创建路径自动生成的上下文内容
+
+> 如创建路径为 workspace/src/module/app/bidInsight
+
+- moduleId 表示以src为基线的path; 除去去后缀部分； module/app/bidInsight
+
+- moduleName 表示文件模块名; bidInsight
+
+- moduleDomId 用于less; tpl； module_app_bidInsight
+
+- monitorTag 表示监控Tag; module_app_bidinsight (全小写)
+
 ### conser 命令说明
 
 - conser 使用简单的文本输入流作为交互式命令
@@ -112,6 +133,9 @@ asd
   </tr>
   <tr>
     <td>module</td> <td>建立新模块</td><td>  module app/coreword  </td>
+  </tr>
+  <tr>
+    <td>mock</td> <td>生成mock文件</td><td>  mock app/coreword  </td>
   </tr>
   <tr>
     <td>push</td> <td> 上传文件</td><td>  push localfile [remotepath] </td>

@@ -1,9 +1,8 @@
 /**
  * @file ${title}
  * 
- * @author ${username} ( ${email} )
+ * @author ${username} (${email})
  */
-
 define(function (require, exports) {
     return exports;
 });

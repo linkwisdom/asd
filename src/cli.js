@@ -83,6 +83,19 @@ var cli = {
         batch.unshift(dir);
         return cli.touch.apply(cli, batch);
     },
+    mock: function (dir) {
+        var batch = env.get('mock-files');
+        if (batch) {
+            batch = batch.split(/[\s,]/) || [];
+        } else {
+            batch = [
+                'GET_module_list', 'moduleList', 'MOD_module'
+            ];
+        }
+
+        batch.unshift(dir);
+        return cli.touch.apply(cli, batch);
+    },
     // 增加以文件
     touch: function (dir) {
 

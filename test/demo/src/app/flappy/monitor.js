@@ -1,7 +1,7 @@
 /**
- * @file ${title} 监控代码
+ * @file 一个新模块 监控代码
  * 
- * @author ${username} (${email})
+ * @author Liandong Liu (liuliandong01@baidu.com)
  */
 define(function (require) {
     var Monitor = require('common/Monitor');
@@ -12,7 +12,7 @@ define(function (require) {
      * @const
      * @type {string}
      */
-    var MONITOR_SOURCE = '${monitorTag}';
+    var MONITOR_SOURCE = 'app_flappy';
 
     /**
      * 监控列表
@@ -30,7 +30,7 @@ define(function (require) {
             var source = this.model.get('source');
             return {
                 source: source,
-                target: 'enter_${monitorTag}'
+                target: 'enter_app_flappy'
             };
         },
         /**

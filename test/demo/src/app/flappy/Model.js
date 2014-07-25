@@ -1,7 +1,7 @@
 /**
- * @file ${title} ${moduleName}Action
+ * @file 一个新模块 flappyAction
  * 
- * @author ${username} (${email})
+ * @author Liandong Liu (liuliandong01@baidu.com)
  */
 define(function (require) {
     var util = require('common/util');
@@ -17,14 +17,14 @@ define(function (require) {
     var OPT_SILENT = { silent: true };
 
     /**
-     * ${title} ModelType
+     * 一个新模块 ModelType
      *
      * @extends {UIModel}
      */
     var DerivedModel = util.derive('ef/UIModel');
 
     /**
-     * ${title} 预加载数据
+     * 一个新模块 预加载数据
      * 
      * @type {Object}
      */

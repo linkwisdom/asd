@@ -1,7 +1,7 @@
 /**
  * ajax - service 定义
  *
- * @author ${username} (${email})
+ * @author Liandong Liu (liuliandong01@baidu.com)
  */
 define( function (require, exports) {
     var extendedAjax = require('library/framework/service/extendedAjax');

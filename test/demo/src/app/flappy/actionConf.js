@@ -1,7 +1,7 @@
 /**
- * @file ${title} ER 路由配置
+ * @file 一个新模块 ER 路由配置
  * 
- * @author ${username} (${email})
+ * @author Liandong Liu (liuliandong01@baidu.com)
  */
 define(function (require) {
     /**
@@ -11,8 +11,8 @@ define(function (require) {
      */
     var actionConf = [
         {
-            path: '/${moduleId}',
-            type: '${moduleId}/Action'
+            path: '/app/flappy',
+            type: 'app/flappy/Action'
         }
     ];
 

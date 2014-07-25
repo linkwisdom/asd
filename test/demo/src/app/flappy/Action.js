@@ -1,7 +1,7 @@
 /**
- * @file ${title} ${moduleName}Action
+ * @file 一个新模块 flappyAction
  * 
- * @author ${username} (${email})
+ * @author Liandong Liu (liuliandong01@baidu.com)
  */
 define(function (require) {
     var util = require('common/util');
@@ -11,7 +11,7 @@ define(function (require) {
     var monitor = require('./monitor');
 
     /**
-     * ${title} Action
+     * 一个新模块 Action
      *
      * @extends Action
      * @constructor
@@ -19,14 +19,14 @@ define(function (require) {
     var DerivedAction = util.derive(Action);
 
     /**
-     * ${title} ModelType
+     * 一个新模块 ModelType
      *
      * @override
      */
     DerivedAction.prototype.modelType = Model;
 
     /**
-     * ${title} ViewType
+     * 一个新模块 ViewType
      *
      * @override
      */

@@ -1,7 +1,7 @@
 /**
- * @file ${title}
+ * @file ${title} ${moduleName}Config
  * 
- * @author ${username} ( ${email} )
+ * @author ${username} (${email})
  */
 define(function (require, exports) {
     /**
@@ -12,15 +12,6 @@ define(function (require, exports) {
     exports.text = {
 
     };
-
-    /**
-     * 常量数字定义
-     * 
-     * @type {Object}
-     */
-    exports.number = {
-
-    };
-
+    
     return exports;
 });

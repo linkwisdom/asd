@@ -1,7 +1,7 @@
 /**
- * @file ${title} ${moduleName}View
+ * @file 一个新模块 flappyView
  * 
- * @author ${username} (${email})
+ * @author Liandong Liu (liuliandong01@baidu.com)
  */
 define(function (require) {
     var util = require('common/util');
@@ -9,7 +9,7 @@ define(function (require) {
     require('etpl/tpl!./template.tpl');
 
     /**
-     * ${title} ViewType
+     * 一个新模块 ViewType
      *
      * @constructor
      * @extends {UIView}
@@ -17,11 +17,11 @@ define(function (require) {
     var DerivedView = util.derive(UIView);
     
     /** 
-     * ${title} 模板
+     * 一个新模块 模板
      *
      * @override
      */
-    DerivedView.prototype.template = '${moduleDomId}';
+    DerivedView.prototype.template = 'app-flappy';
 
     /** 
      * UI属性设置

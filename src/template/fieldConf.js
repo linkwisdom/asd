@@ -1,9 +1,8 @@
 /**
- * @file  - 定义看排名表格字段配置
+ * @file ${title} 表格字段配置
  * 
- * @author Liandong Liu ( liuliandong01@baidu.com )
+ * @author ${username} (${email})
  */
-
 define(function (require, exports) {
     var util = require('er/util');
     var etpl = require('etpl');
