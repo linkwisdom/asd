@@ -2,9 +2,11 @@ var fs = require('fs');
 var path = require('path');
 
 var bcsStat = 0;
+var bucketName = 'my-file';
 
 exports.login = function (context) {
     var BCS = require('./lib/bcs');
+    bucketName = context.bucket || 'my-file';
     exports.bcs = BCS.createClient({
         accessKey: context.ackey,
         secretKey: context.sckey
@@ -20,7 +22,7 @@ exports.push = function ( filename , context, rfile ) {
     var source = path.resolve(process.cwd(), filename);
 
     exports.bcs.putObject({
-        bucket: 'my-file',
+        bucket: bucketName,
         object: rfile || filename,
         source: source
     }, function (error, result) {
@@ -40,7 +42,7 @@ exports.pull = function ( filename, context, callback ) {
     var source = path.resolve(process.cwd(), filename);
 
     exports.bcs.getObject({
-        bucket: 'my-file',
+        bucket: bucketName,
         object: filename,
         source: source
     }, function (error, result) {
@@ -56,7 +58,7 @@ exports.list = function ( pathname, context ) {
     var source = path.resolve(process.cwd(), pathname);
 
     exports.bcs.listObject({
-        bucket: 'my-file',
+        bucket: bucketName,
         object: pathname,
         source: source
     }, function (error, response) {
