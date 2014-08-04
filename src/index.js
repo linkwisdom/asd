@@ -49,6 +49,9 @@ exports.touch = function (target, context, pwd) {
 
     var targetFile = path.resolve( pwd || process.cwd(), file );
 
+    // 解决windows路径问题
+    targetFile = targetFile.replace(/\\/g, '/');
+
     // context 为模板上下文数据
     context = context || {};
 
@@ -74,7 +77,7 @@ exports.touch = function (target, context, pwd) {
     content = content.replace(/\<\!\-\-\-/g, '<!--');
 
     // 如果文件名包含module字段，自动替换为moduleName
-    targetFile = targetFile.replace('module', context.moduleName);
+    targetFile = targetFile.replace('_module_', '_' + context.moduleName);
 
     fs.writeFileSync(targetFile, content );
 
