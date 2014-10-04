@@ -1,11 +1,12 @@
 /**
- * @file ${title} ${moduleName}Action
+ * @file ${title} ${moduleName} Model
  * 
  * @author ${username} (${email})
  */
 define(function (require) {
     var util = require('common/util');
     var datasource = require('er/datasource');
+    var UIModel = require('ef/UIModel');
     var service = require('./service');
 
     /**
@@ -21,7 +22,7 @@ define(function (require) {
      *
      * @extends {UIModel}
      */
-    var DerivedModel = util.derive('ef/UIModel');
+    var DerivedModel = util.derive(UIModel);
 
     /**
      * ${title} 预加载数据

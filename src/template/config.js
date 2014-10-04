@@ -1,5 +1,5 @@
 /**
- * @file ${title} ${moduleName}Config
+ * @file ${title} ${moduleName} Config
  * 
  * @author ${username} (${email})
  */

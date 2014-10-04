@@ -1,5 +1,5 @@
 /**
- * @file ${title} ${moduleName}View
+ * @file ${title} ${moduleName} View
  * 
  * @author ${username} (${email})
  */

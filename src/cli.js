@@ -4,10 +4,16 @@ var env = require('loconf');
 var asd = require('./index');
 var files = require('./files');
 var bcs = require('./bcs');
+var brs = require('./brs').brs;
 
 env.use('asd');
-
 var cli = {
+    brs: function () {
+        var context = env.getContext('asd');
+        var files = Array.prototype.slice.call(arguments, 0);
+        console.log(files);
+        return brs(files, context, './');
+    },
     // 设置环境变量
     set: function (key, value) {
         env.set(key, value);

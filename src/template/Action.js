@@ -1,5 +1,5 @@
 /**
- * @file ${title} ${moduleName}Action
+ * @file ${title} ${moduleName} Action
  * 
  * @author ${username} (${email})
  */
@@ -19,14 +19,14 @@ define(function (require) {
     var DerivedAction = util.derive(Action);
 
     /**
-     * ${title} ModelType
+     * ${title} modelType
      *
      * @override
      */
     DerivedAction.prototype.modelType = Model;
 
     /**
-     * ${title} ViewType
+     * ${title} viewType
      *
      * @override
      */
